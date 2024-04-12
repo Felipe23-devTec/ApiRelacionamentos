@@ -43,6 +43,7 @@ public class PedidoRepository : IPedidoRepository
             var pedidoAberto = await _context.tb_Pedidos
                     .Where(x => x.ClienteId == idCiente && x.Status == "Aberto")
                     .Include(x => x.Cliente)
+                    .Include(x => x.Items)
                     .FirstOrDefaultAsync();
             return pedidoAberto;
         }
