@@ -19,24 +19,31 @@ public class DAO
         SqlConnection conexao = new SqlConnection(connectionString);
 
         conexao.Open();
-
-        comando.Connection = conexao;
-        comando.CommandType = System.Data.CommandType.StoredProcedure;
-        comando.CommandText = NomeProcedure;
-
-        comando.Parameters.AddWithValue("@ID_CLIENTE", 1);
-
-        SqlDataAdapter adapter = new SqlDataAdapter(comando);
-        DataTable dataTable = new DataTable();
-
-        adapter.Fill(dataTable);
-
-        // Exiba os resultados
-        foreach (DataRow row in dataTable.Rows)
+        try
         {
-            Console.WriteLine(row["Nome"]);
-            Console.WriteLine(row["IdPedido"]);
+            comando.Connection = conexao;
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            comando.CommandText = NomeProcedure;
+
+            comando.Parameters.AddWithValue("@ID_CLIENTE", 1);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(comando);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+
+            // Exiba os resultados
+            foreach (DataRow row in dataTable.Rows)
+            {
+                Console.WriteLine(row["Nome"]);
+                Console.WriteLine(row["IdPedido"]);
+            }
         }
+        catch (Exception ex)
+        {
+
+            throw new Exception(ex.Message);
+        }
+        finally { conexao.Close(); }    
 
     }
 }

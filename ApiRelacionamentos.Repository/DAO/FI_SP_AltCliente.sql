@@ -1,0 +1,57 @@
+--Alterar dados
+CREATE PROC FI_SP_AltCliente
+    @NOME          VARCHAR (50) ,
+    @EMAIL         VARCHAR (2079),
+    @TELEFONE      VARCHAR (15),
+	@Id           BIGINT
+AS
+BEGIN
+	UPDATE tb_Cliente
+	SET 
+		NOME = @NOME,
+		EMAIL = @EMAIL, 
+		TELEFONE = @TELEFONE
+	WHERE IdCliente = @Id
+END
+--Excluir procedure
+IF EXISTS(SELECT 1 FROM SYS.OBJECTS WHERE TYPE = 'P' AND NAME = 'FI_SP_AltCliente')
+	BEGIN
+		DROP PROCEDURE FI_SP_AltCliente
+	END
+GO
+
+--Pegar valores pelo ID
+CREATE PROCEDURE SP_CONSULTAR_CLIENTE_POR_ID
+	@ID_CLIENTE INTEGER
+AS
+BEGIN
+	SELECT * FROM tb_Cliente WHERE IdCliente = @ID_CLIENTE
+END
+--consulta por DUAS TABELAS INNER JOIN
+CREATE PROCEDURE SP_PEDIDOS_POR_CLIENTE
+	@ID_CLIENTE INTEGER
+AS
+BEGIN
+	SELECT * FROM tb_Cliente A(NOLOCK) INNER JOIN tb_Pedidos B(NOLOCK) ON(B.ClienteId = A.IdCliente) WHERE IdCliente = @ID_CLIENTE
+END
+
+--inserir valores
+
+CREATE PROC FI_SP_Incluir_pedido
+    @VALOR INTEGER,
+	@STATUS VARCHAR(20),
+	@IDCLIENTE INTEGER
+
+
+AS
+BEGIN
+	INSERT INTO tb_Pedidos(ValorTotal, Status, ClienteId) 
+	VALUES (@VALOR, @STATUS, @IDCLIENTE)
+
+	SELECT SCOPE_IDENTITY()
+END
+--Executando as procedures
+EXEC SP_CONSULTAR_CLIENTE_POR_ID 1
+EXEC SP_PEDIDOS_POR_CLIENTE 1
+EXEC FI_SP_Incluir_pedido 3, 'Concluido', 1
+
