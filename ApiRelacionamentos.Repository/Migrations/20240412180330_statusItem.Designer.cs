@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiRelacionamentos.Repository.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240315171230_Initialnovo")]
-    partial class Initialnovo
+    [Migration("20240412180330_statusItem")]
+    partial class statusItem
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,7 +35,15 @@ namespace ApiRelacionamentos.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCliente"));
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -69,7 +77,7 @@ namespace ApiRelacionamentos.Repository.Migrations
 
                     b.HasIndex("PedidoId");
 
-                    b.ToTable("Item");
+                    b.ToTable("tb_Item");
                 });
 
             modelBuilder.Entity("ApiRelacionamentos.Domain.BusinessObjects.Pedido", b =>
@@ -82,6 +90,10 @@ namespace ApiRelacionamentos.Repository.Migrations
 
                     b.Property<int>("ClienteId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("ValorTotal")
                         .HasColumnType("real");

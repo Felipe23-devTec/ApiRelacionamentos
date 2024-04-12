@@ -25,6 +25,8 @@ public class ClienteController : ControllerBase
             var cliente = new Cliente()
             {
                 Nome = clienteModel.Nome,
+                Email = "felipe@gmail.com",
+                Telefone = "0393459"
             };
             await _clienteRepository.AdicionarCliente(cliente);
 

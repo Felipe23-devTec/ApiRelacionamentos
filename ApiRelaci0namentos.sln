@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiRelaci0namentos", "ApiRelaci0namentos\ApiRelaci0namentos.csproj", "{7C8B211E-1819-4075-B000-686809C942A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiRelaci0namentos", "ApiRelaci0namentos\ApiRelaci0namentos.csproj", "{7C8B211E-1819-4075-B000-686809C942A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiRelacionamentos.Domain", "ApiRelacionamentos.Domain\ApiRelacionamentos.Domain.csproj", "{95E066DB-D4A1-4220-BB29-69E74725307C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiRelacionamentos.Domain", "ApiRelacionamentos.Domain\ApiRelacionamentos.Domain.csproj", "{95E066DB-D4A1-4220-BB29-69E74725307C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiRelacionamentos.Repository", "ApiRelacionamentos.Repository\ApiRelacionamentos.Repository.csproj", "{165FEAE2-FA17-41A7-A04A-C03CCDD31E1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiRelacionamentos.Repository", "ApiRelacionamentos.Repository\ApiRelacionamentos.Repository.csproj", "{165FEAE2-FA17-41A7-A04A-C03CCDD31E1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiRelacionamento.Service", "ApiRelacionamento.Service\ApiRelacionamento.Service.csproj", "{998B89CE-41DE-4110-B250-7DD113828963}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{165FEAE2-FA17-41A7-A04A-C03CCDD31E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{165FEAE2-FA17-41A7-A04A-C03CCDD31E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{165FEAE2-FA17-41A7-A04A-C03CCDD31E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{998B89CE-41DE-4110-B250-7DD113828963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{998B89CE-41DE-4110-B250-7DD113828963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{998B89CE-41DE-4110-B250-7DD113828963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{998B89CE-41DE-4110-B250-7DD113828963}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

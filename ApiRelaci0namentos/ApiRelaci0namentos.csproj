@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ApiRelacionamento.Service\ApiRelacionamento.Service.csproj" />
     <ProjectReference Include="..\ApiRelacionamentos.Repository\ApiRelacionamentos.Repository.csproj" />
   </ItemGroup>
 

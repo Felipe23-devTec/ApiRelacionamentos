@@ -10,38 +10,47 @@ using System.Threading.Tasks;
 
 namespace ApiRelacionamentos.Repository.Repository.RepositoryImplementacion;
 
-public class ClienteRepository : IClienteRepository
+public class PedidoRepository : IPedidoRepository
 {
     private readonly Context _context;
-
-    public ClienteRepository(Context context)
+    public PedidoRepository(Context context)
     {
         _context = context;
     }
-    public async Task AdicionarCliente(Cliente cliente)
+    public async Task AdicionarPedido(Pedido pedido)
     {
         try
         {
-            await _context.tb_Cliente.AddAsync(cliente);
+            await _context.AddAsync(pedido);
             await _context.SaveChangesAsync();
         }
         catch (Exception ex)
         {
+
             throw new Exception(ex.Message, ex.InnerException);
         }
-
     }
-    public async Task<Cliente> BuscarClientePorId(int idCliente)
+
+    public Task AtualizarPedido(Pedido pedido)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<Pedido> BuscarPedidoPorCliente(int idCiente)
     {
         try
         {
-            var cliente = await _context.tb_Cliente.Where(x => x.IdCliente == idCliente).FirstOrDefaultAsync();
-            return cliente;
+            var pedidoAberto = await _context.tb_Pedidos
+                    .Where(x => x.ClienteId == idCiente && x.Status == "Aberto")
+                    .Include(x => x.Cliente)
+                    .FirstOrDefaultAsync();
+            return pedidoAberto;
         }
         catch (Exception ex)
         {
 
-            throw new Exception(ex.Message);
+            throw new Exception(ex.Message, ex.InnerException);
         }
+
     }
 }

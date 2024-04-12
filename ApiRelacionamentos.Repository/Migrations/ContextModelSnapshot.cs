@@ -74,7 +74,7 @@ namespace ApiRelacionamentos.Repository.Migrations
 
                     b.HasIndex("PedidoId");
 
-                    b.ToTable("Item");
+                    b.ToTable("tb_Item");
                 });
 
             modelBuilder.Entity("ApiRelacionamentos.Domain.BusinessObjects.Pedido", b =>

@@ -1,6 +1,7 @@
 ﻿using ApiRelacionamentos.Domain.BusinessObjects;
 using ApiRelacionamentos.Repository.DataContext;
 using ApiRelacionamentos.Repository.Repository.RepositoryContract;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,15 @@ namespace ApiRelacionamentos.Repository.Repository.RepositoryImplementacion
 
                 throw new Exception(ex.Message, ex.InnerException);
             }
+        }
+        public async Task<Pedido> BuscarPedidoPorCliente(int idCiente)
+        {
+            var pedidoAberto = await _context.tb_Pedidos
+                .Where(x => x.ClienteId == idCiente && x.Status == "Aberto")
+                //.Include(x => x.Cliente)
+                //.Include(x => x.Items)
+                .FirstOrDefaultAsync();
+            return pedidoAberto;
         }
     }
 }

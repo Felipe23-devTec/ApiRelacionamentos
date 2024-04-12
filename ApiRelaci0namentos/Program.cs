@@ -1,3 +1,5 @@
+using ApiRelacionamento.Service.ServiceContract;
+using ApiRelacionamento.Service.ServiceImplementacion;
 using ApiRelacionamentos.Repository.DataContext;
 using ApiRelacionamentos.Repository.Repository.RepositoryContract;
 using ApiRelacionamentos.Repository.Repository.RepositoryImplementacion;
@@ -11,6 +13,9 @@ builder.Services.AddEntityFrameworkSqlServer()
 // Add services to the container.
 builder.Services.AddScoped<IITemRepository, ItemRepository>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
+
+builder.Services.AddScoped<IPedidoService, PedidoService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiRelacionamentos.Repository.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240315230200_NovasPropriedades")]
-    partial class NovasPropriedades
+    [Migration("20240411234601_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,11 +73,15 @@ namespace ApiRelacionamentos.Repository.Migrations
                     b.Property<int>("Quantidade")
                         .HasColumnType("int");
 
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("IdItem");
 
                     b.HasIndex("PedidoId");
 
-                    b.ToTable("Item");
+                    b.ToTable("tb_Item");
                 });
 
             modelBuilder.Entity("ApiRelacionamentos.Domain.BusinessObjects.Pedido", b =>

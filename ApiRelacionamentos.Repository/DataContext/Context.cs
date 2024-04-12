@@ -16,11 +16,12 @@ public class Context : DbContext
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseLazyLoadingProxies();
+        optionsBuilder.UseLazyLoadingProxies(false);
 
         base.OnConfiguring(optionsBuilder);
     }
 
     public DbSet<Cliente> tb_Cliente { get; set; }
+    public DbSet<Item> tb_Item { get; set; }
     public DbSet<Pedido> tb_Pedidos { get; set; }
 }

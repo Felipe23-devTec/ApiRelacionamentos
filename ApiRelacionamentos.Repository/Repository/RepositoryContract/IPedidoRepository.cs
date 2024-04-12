@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace ApiRelacionamentos.Repository.Repository.RepositoryContract;
 
-public interface IClienteRepository
+public interface IPedidoRepository
 {
-    Task AdicionarCliente(Cliente cliente);
-    Task<Cliente> BuscarClientePorId(int idCliente);
+    Task<Pedido> BuscarPedidoPorCliente(int idCiente);
+    Task AdicionarPedido(Pedido pedido);
+    Task AtualizarPedido(Pedido pedido);
 }
